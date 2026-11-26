@@ -77,8 +77,10 @@ TH-Video/
 ## 7. Kiểm tra
 
 ```powershell
-py -3 "$env:USERPROFILE\.claude\skills\ed-video-studio\scripts\doctor.py" --full
+py -3 "$env:USERPROFILE\.claude\skills\ed-video-studio\scripts\doctor.py" --fix --full
 ```
+
+`--fix` tự cài thư viện Python còn thiếu. Sau này mỗi lần làm video, skill tự chạy bước kiểm tra này và tự cài phần thiếu; thiếu Python, Node hoặc FFmpeg thì Claude hỏi bạn trước khi tải.
 
 Kết luận **SẴN SÀNG** là dùng được. Còn lỗi thì làm theo dòng `→` dưới mỗi lỗi, hoặc dán kết quả cho Claude và nhờ sửa. Lần đầu chạy `--full` mất vài phút vì phải tải HyperFrames và Chrome để render.
 

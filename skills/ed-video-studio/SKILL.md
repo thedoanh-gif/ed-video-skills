@@ -5,7 +5,7 @@ description: 'Làm video motion graphic chuẩn TH trên HyperFrames từ input 
 
 # ED_Video Studio
 
-Skill điều phối (v1.4). Mục tiêu: người dùng chỉ cần đưa input và duyệt ở 3 điểm, còn lại agent làm, đồng thời mỗi video **giống các tập khác trong cùng series** về hình, nhịp và giọng.
+Skill điều phối (v1.5). Mục tiêu: người dùng chỉ cần đưa input và duyệt ở 3 điểm, còn lại agent làm, đồng thời mỗi video **giống các tập khác trong cùng series** về hình, nhịp và giọng.
 
 ## Khi bắt đầu: người dùng chọn phong cách và font
 Áp dụng cho mọi video **chưa có Series Kit đã chốt**. Làm trước khi viết brief và kịch bản.
@@ -31,7 +31,12 @@ Cách áp vào dự án: `<python> <skill>/assets/styles/tao_mau.py --ap-dung <m
 
 ## Trước khi bắt đầu
 
-1. **Kiểm tra môi trường bằng một lệnh**: `<python> <skill>/scripts/doctor.py` (thêm `--full` để kiểm cả HyperFrames và Chrome; cách sửa in ngay dưới mỗi lỗi). Script đọc phiên bản đã ghim trong `assets/kit.lock.json` và báo OK / CẢNH BÁO / LỖI cho Node, HyperFrames, FFmpeg, Python, edge-tts, mạng tới máy chủ giọng đọc, telemetry. Có LỖI thì dừng lại, chỉ người dùng tới `CAI-DAT.md`, không tự cài giữa chừng một dự án. Skill cần chạy **trên máy đã cài HyperFrames**. Ở môi trường không cài được (ví dụ chat trên web) vẫn làm được bước 1–2 (brief, kịch bản) và Voice→SRT, rồi báo người dùng mở Claude Code để dựng.
+1. **Kiểm tra môi trường và tự cài phần còn thiếu**: đầu phiên chạy `<python> <skill>/scripts/doctor.py --fix` (thêm `--full` để kiểm cả HyperFrames và Chrome; cách sửa in ngay dưới mỗi lỗi). Script đọc phiên bản đã ghim trong `assets/kit.lock.json` và báo OK / CẢNH BÁO / LỖI cho Node, HyperFrames, FFmpeg, Python, edge-tts, mạng tới máy chủ giọng đọc, telemetry. `--fix` tự cài thư viện Python còn thiếu (edge-tts, pillow, numpy) cho riêng người dùng: không cần hỏi trước, nhưng báo một câu đã cài gì. Phần còn lại xử lý như sau, xong thì chạy lại doctor:
+   - **HyperFrames, Chrome để render**: chạy `doctor.py --fix --full`, `npx` và HyperFrames tự tải. Chưa có skill `/hyperframes` thì chạy `<hf> skills`.
+   - **Python, Node, FFmpeg** (không chạy được Python tức là thiếu Python): nói rõ thiếu gì và tải từ đâu, hỏi đồng ý **một lần**, rồi tự cài theo `CAI-DAT.md`.
+   - **Không tải được** (môi trường đám mây, mạng bị chặn, chat trên web): không thử đi thử lại. Báo rõ lý do, vẫn làm được bước 1–2 (brief, kịch bản) và Voice→SRT nếu công cụ có sẵn, rồi nhắc người dùng mở Claude Code trên máy của mình để dựng.
+
+   Chỉ cài thứ **còn thiếu**, không nâng hay hạ bản đang có, nhất là khi dự án đang làm dở. Còn LỖI thì chưa dựng video. Skill cần chạy **trên máy đã cài HyperFrames**.
 2. **Máy công ty, không có quyền admin.** Không chạy lệnh nào cần quyền quản trị: không "Run as administrator", không `sudo`, không cài vào `Program Files`, không sửa PATH hệ thống (chỉ PATH của người dùng), không choco, không Docker. `doctor` của HyperFrames có thể gợi ý lệnh cần quyền admin (whisper-cpp, Docker): bỏ qua, đó là phần tùy chọn. Cách cài không cần admin: `CAI-DAT.md`.
 3. **Đọc skill `/hyperframes` trước khi viết bất kỳ dòng HTML nào.** Luật render của HyperFrames thắng mọi hướng dẫn trong skill này nếu hai bên mâu thuẫn.
 4. **Tìm thư mục làm việc `TH-Video/`** (thường nằm ở Desktop/Documents/OneDrive). Không thấy thì hỏi người dùng. Cấu trúc:

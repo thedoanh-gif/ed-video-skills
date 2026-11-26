@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """ED_Video Kit doctor: kiểm tra môi trường trước khi làm video.
 
-Chỉ dùng thư viện chuẩn của Python. Không cài gì, không cần quyền admin.
+Chỉ dùng thư viện chuẩn của Python, không cần quyền admin. Không có --fix thì không cài gì.
+--fix chỉ cài thư viện Python còn thiếu (đúng bản ghim, cho riêng người dùng), không nâng hay hạ bản đang có.
 Mọi gợi ý sửa đều là cách làm KHÔNG cần quyền admin (cài cho riêng người dùng).
 
 Cách dùng:
   <python> doctor.py              # kiểm tra nhanh
+  <python> doctor.py --fix        # tự cài thư viện Python còn thiếu rồi kiểm tra
   <python> doctor.py --full       # thêm: tải/kiểm HyperFrames bản ghim và Chrome để render (lần đầu có thể mất vài phút)
   <python> doctor.py --json       # kết quả dạng JSON cho agent đọc
 Mã thoát: 0 = không có LỖI, 1 = có ít nhất một LỖI.
 """
-import argparse, json, os, platform, re, shutil, socket, subprocess, sys
+import argparse, importlib, json, os, platform, re, shutil, site, socket, subprocess, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -46,6 +48,31 @@ def which(name):
     return shutil.which(name + ".cmd") if IS_WIN and shutil.which(name + ".cmd") else shutil.which(name)
 
 
+def pkg_version(name):
+    try:
+        from importlib.metadata import version
+        return version(name)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def pip_install(pins):
+    """Cài các gói còn thiếu. Trả về "" nếu được, ngược lại là dòng lỗi cuối của pip."""
+    in_venv = sys.prefix != sys.base_prefix
+    cmd = [sys.executable, "-m", "pip", "install"] + ([] if in_venv else ["--user"]) + pins
+    print("Đang cài thư viện còn thiếu: " + " ".join(pins), file=sys.stderr, flush=True)
+    rc, out = run(cmd, timeout=600)
+    # thư mục cài cho người dùng có thể vừa được tạo, phải thêm vào để nhận ra gói mới
+    if not in_venv and site.getusersitepackages() not in sys.path:
+        sys.path.append(site.getusersitepackages())
+    importlib.invalidate_caches()
+    if rc == 0:
+        return ""
+    lines = [x.strip() for x in out.splitlines() if x.strip()]
+    errors = [x for x in lines if x.startswith("ERROR")]
+    return (errors or lines or [f"pip trả mã {rc}"])[-1][:200]
+
+
 def user_path_hint(folder):
     if IS_WIN:
         return ("Thêm vào PATH của NGƯỜI DÙNG (không cần admin), chạy trong PowerShell: "
@@ -58,6 +85,7 @@ def main():
     ap = argparse.ArgumentParser(description="ED_Video Kit doctor")
     ap.add_argument("--full", action="store_true", help="kiểm cả HyperFrames bản ghim và Chrome render (chậm lần đầu)")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--fix", action="store_true", help="tự cài thư viện Python còn thiếu (không cần admin)")
     a = ap.parse_args()
 
     lock = {}
@@ -93,17 +121,18 @@ def main():
             "Chạy một lần (không cần admin): setx PYTHONUTF8 1   rồi mở terminal mới.")
 
     # 3. Thư viện Python
-    try:
-        from importlib.metadata import version, PackageNotFoundError
-    except ImportError:  # pragma: no cover
-        version = None
     pkgs = list(lock.get("pip_packages", ["pillow", "numpy"])) + ["edge-tts"]
+
+    def pinned(name):
+        return f"edge-tts=={lock['edge_tts']}" if name == "edge-tts" and lock.get("edge_tts") else name
+
+    absent = [pk for pk in pkgs if pkg_version(pk) is None]
+    fix_error = ""
+    if absent and a.fix and ver_tuple(pv) >= ver_tuple(need):
+        fix_error = pip_install([pinned(pk) for pk in absent])
     missing = []
     for pk in pkgs:
-        try:
-            v = version(pk) if version else "?"
-        except Exception:  # noqa: BLE001
-            v = None
+        v = pkg_version(pk)
         if v is None:
             missing.append(pk)
             continue
@@ -111,11 +140,17 @@ def main():
             add("edge-tts", WARN, f"đang có {v}, kit đã thử với {lock['edge_tts']}",
                 f"{Path(sys.executable).name} -m pip install --user edge-tts=={lock['edge_tts']}")
         else:
-            add(pk, OK, v)
+            add(pk, OK, f"{v} (vừa cài)" if pk in absent else v)
     if missing:
-        pins = [f"edge-tts=={lock['edge_tts']}" if m == "edge-tts" and lock.get("edge_tts") else m for m in missing]
-        add("Thư viện Python", FAIL, "thiếu: " + ", ".join(missing),
-            f"\"{sys.executable}\" -m pip install --user " + " ".join(pins))
+        command = f"\"{sys.executable}\" -m pip install --user " + " ".join(pinned(m) for m in missing)
+        detail = "thiếu: " + ", ".join(missing)
+        if fix_error:
+            detail += f". Đã thử tự cài nhưng không được: {fix_error}"
+            command = ("Kiểm tra mạng: môi trường đám mây hoặc mạng công ty có thể chặn tải gói. "
+                       "Chạy trên máy của bạn hoặc hỏi IT, rồi chạy lại: " + command)
+        elif not a.fix:
+            command = "Chạy lại doctor.py với --fix để tự cài, hoặc: " + command
+        add("Thư viện Python", FAIL, detail, command)
 
     # 4. Node + npx
     node = which("node")
