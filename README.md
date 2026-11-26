@@ -2,6 +2,8 @@
 
 Bộ 5 skill cho Claude Code để làm video motion graphic trên [HyperFrames](https://github.com/heygen-com/hyperframes), từ tài liệu nội dung đến file MP4, giữ phong cách và giọng đọc đồng nhất theo series. Lời thoại, giao tiếp và tài liệu bằng tiếng Việt.
 
+**Trang hướng dẫn (xem ngay trên trình duyệt):** https://thedoanh-gif.github.io/ed-video-skills/
+
 ## 5 skill
 
 | Skill | Việc làm | Ai dùng |
@@ -22,17 +24,13 @@ Bộ 5 skill cho Claude Code để làm video motion graphic trên [HyperFrames]
 
 ## Cài đặt
 
-Tải repo (nút **Code → Download ZIP**, hoặc `git clone`), rồi chạy trong PowerShell tại thư mục repo:
+Tải repo ([bản ZIP](https://github.com/thedoanh-gif/ed-video-skills/archive/refs/heads/main.zip), không cần tài khoản GitHub), giải nén, rồi chạy trong PowerShell tại thư mục repo:
 
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null; Copy-Item -Recurse -Force .\skills\ed-video-* "$env:USERPROFILE\.claude\skills\"
 ```
 
 Phần còn lại (Python, Node, FFmpeg, HyperFrames, font) xem [CAI-DAT.md](skills/ed-video-studio/CAI-DAT.md). Không bước nào cần quyền admin.
-
-## Hướng dẫn sử dụng
-
-Tải file [docs/huong-dan.html](docs/huong-dan.html) về máy rồi mở bằng trình duyệt (GitHub không hiển thị trực tiếp trang HTML). Trang có bộ chọn phong cách, font và câu lệnh mẫu.
 
 ## Dùng thử
 
