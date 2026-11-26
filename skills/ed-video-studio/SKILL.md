@@ -5,7 +5,7 @@ description: 'Làm video motion graphic chuẩn TH trên HyperFrames từ input 
 
 # ED_Video Studio
 
-Skill điều phối (v1.3). Mục tiêu: người dùng chỉ cần đưa input và duyệt ở 3 điểm, còn lại agent làm, đồng thời mỗi video **giống các tập khác trong cùng series** về hình, nhịp và giọng.
+Skill điều phối (v1.4). Mục tiêu: người dùng chỉ cần đưa input và duyệt ở 3 điểm, còn lại agent làm, đồng thời mỗi video **giống các tập khác trong cùng series** về hình, nhịp và giọng.
 
 ## Khi bắt đầu: người dùng chọn phong cách và font
 Áp dụng cho mọi video **chưa có Series Kit đã chốt**. Làm trước khi viết brief và kịch bản.
@@ -115,6 +115,7 @@ Khi người dùng chỉ cần phụ đề, ví dụ "chuyển file ghi âm này
 
 ## Tài nguyên trong skill
 - `CAI-DAT.md`: cài đặt cho máy mới, không cần quyền admin
+- `CHANGELOG.md`: số bản và thay đổi từng bản
 - `references/`: hướng dẫn chi tiết cho từng bước, `quality-standards.md` (chuẩn bóc từ video mẫu), `motion-rules.md`, `series-kit-spec.md`
 - `assets/series-kits/th-default/`: Series Kit mặc định TH BlueGold, có `blocks/` (7 khung cảnh dựng sẵn) và `brand/` (chỗ đặt logo)
 - `assets/series-kits/dark-studio/`: Series Kit **Dark Studio · Nắng sớm** (đã duyệt hình): `styleframes/`, nhạc, SFX, `engine/` (mã dựng theo dữ liệu + ví dụ video báo cáo)

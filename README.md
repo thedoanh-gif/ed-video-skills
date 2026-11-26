@@ -32,6 +32,10 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
 
 Phần còn lại (Python, Node, FFmpeg, HyperFrames, font) xem [CAI-DAT.md](skills/ed-video-studio/CAI-DAT.md). Không bước nào cần quyền admin.
 
+## Cập nhật
+
+Đã cài rồi thì mở [mục Cập nhật](https://thedoanh-gif.github.io/ed-video-skills/#cap-nhat), chép câu lệnh U1 và dán vào Claude Code. Tự chạy tay: tải bản ZIP mới, rồi chạy `py -3 cap-nhat.py --xem` (xem trước) và `py -3 cap-nhat.py` (sao lưu và cập nhật) trong thư mục đã giải nén. Thay đổi từng bản: [CHANGELOG.md](skills/ed-video-studio/CHANGELOG.md).
+
 ## Dùng thử
 
 Nhắn trong Claude Code:
