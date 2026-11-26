@@ -1,0 +1,56 @@
+/* P2 · Tươi mát — hình tròn mềm, nhiều khoảng thở: bạc hà + xanh trời */
+:root{--bg:#F2FBF8;--bg-alt:#D1FAE5;--bg-dark:#0B5D4A;--ink:#12343B;--ink-2:#4F6B70;
+  --primary-deep:#065F46;--primary:#047857;--accent:#10B981;--accent-text:#047857;--accent-on-dark:#A7F3D0;
+  --card:#FFFFFF;--radius-card:56px;--card-border:0 solid transparent;--card-shadow:0 30px 70px rgba(18,52,59,.10);
+  --font-display:'DINRoundOT',sans-serif}
+
+#root .deco{width:900px;height:860px;right:-250px;top:-290px;border-radius:58% 42% 63% 37% / 45% 55% 45% 55%;background:#D1FAE5}
+#root .wrap::after{content:"";position:absolute;left:-230px;bottom:-300px;width:720px;height:560px;border-radius:42% 58% 37% 63% / 55% 45% 55% 45%;background:#DBEAFE}
+#root .wrap::before{content:"";position:absolute;right:150px;bottom:110px;width:64px;height:64px;border-radius:50%;background:#3B82F6;opacity:.28;box-shadow:-110px 64px 0 -14px #10B981}
+#root .head,#root .box,#root .cols,#root .track,#root .row{z-index:1}
+#root .head{left:0;right:0;text-align:center;top:128px;font-size:72px}
+#root .head:before{margin:0 auto 28px;width:120px;height:12px;border-radius:99px;background:linear-gradient(90deg,#10B981,#3B82F6)}
+
+/* mở đầu */
+#root .sb-title .bar{width:150px;height:30px;background:radial-gradient(circle at 15px 15px,#10B981 15px,transparent 16px) 0 0/30px 30px no-repeat,radial-gradient(circle at 15px 15px,#3B82F6 15px,transparent 16px) 60px 0/30px 30px no-repeat,radial-gradient(circle at 15px 15px,#A7F3D0 15px,transparent 16px) 120px 0/30px 30px no-repeat}
+#root .sb-title .eyebrow{align-self:flex-start;background:#047857;color:#fff;border-radius:99px;padding:14px 34px 12px;font-size:34px;letter-spacing:.06em;margin-bottom:34px}
+#root .sb-title .title{font-size:140px;line-height:1.12}
+#root .sb-title .deco{width:1000px;height:1000px;right:-180px;top:40px;background:radial-gradient(circle at 35% 35%,#A7F3D0,#D1FAE5 55%,#DBEAFE)}
+#root .sb-title .num{color:#047857;opacity:.14;font-size:380px;right:130px;bottom:70px}
+
+/* con số: nằm trong vòng tròn trắng */
+#root .sb-number .box{align-items:center;text-align:center}
+#root .sb-number .box::before{content:"";position:absolute;left:50%;top:50%;width:760px;height:760px;margin:-430px 0 0 -380px;border-radius:50%;background:#fff;box-shadow:0 0 0 46px rgba(16,185,129,.12),0 40px 90px rgba(18,52,59,.10)}
+#root .sb-number .numline,#root .sb-number .label,#root .sb-number .note{position:relative}
+#root .sb-number .numline{margin-top:-80px;color:#047857}
+#root .sb-number .val{font-size:330px}
+#root .sb-number .pre,#root .sb-number .suf{font-size:100px;color:#2563C9}
+#root .sb-number .label{font-size:50px;max-width:620px;margin-top:6px}
+#root .sb-number .note{position:absolute;left:0;right:0;bottom:60px;margin:0}
+
+/* quy trình */
+#root .sb-steps .line{background:repeating-linear-gradient(90deg,#6EE7B7 0 22px,transparent 22px 40px)}
+#root .sb-steps .fill{background:linear-gradient(90deg,#10B981,#3B82F6)}
+#root .sb-steps .dot{border:0;box-shadow:0 0 0 18px #D1FAE5,0 22px 40px rgba(18,52,59,.14);color:#047857}
+#root .sb-steps .step.on .dot{background:#047857;color:#fff}
+#root .sb-steps .lab{margin-top:52px}
+
+/* so sánh */
+#root .sb-compare .col.bad{background:#E6EEEC;border:0}
+#root .sb-compare .col.good{border-top:20px solid #10B981}
+#root .sb-compare .good .ct{color:#047857}
+#root .sb-compare .good .mk{background:#047857} #root .sb-compare .good .it:before{background:#3B82F6}
+
+/* ba ý */
+#root .sb-points .card{text-align:center}
+#root .sb-points .idx{width:150px;height:150px;border-radius:50%;background:#D1FAE5;display:flex;align-items:center;justify-content:center;margin:0 auto 46px;font-size:64px;color:#047857}
+
+/* câu chốt, kêu gọi */
+#root .sb-message .deco{background:rgba(255,255,255,.08);width:900px;height:860px}
+#root .sb-message .wrap::after{background:rgba(59,130,246,.35)}
+#root .sb-message .qm{color:#A7F3D0} #root .sb-message .hl:after{background:#10B981}
+#root .sb-outro .action{background:linear-gradient(90deg,#047857,#2563C9)}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}
+#root .sb-compare .bad .mk{background:#5F6F73}

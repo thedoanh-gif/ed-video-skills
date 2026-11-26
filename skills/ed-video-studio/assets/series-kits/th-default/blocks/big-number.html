@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- ED_Video Kit · khung cảnh "big-number". Đổi nội dung bằng data-variable-values ở thẻ gắn (xem README.md cùng thư mục). -->
+<html lang="vi" data-composition-variables='[
+  {"id":"value","type":"string","label":"Con số đích (vd: 30 hoặc 4.5)","default":"30"},
+  {"id":"prefix","type":"string","label":"Chữ trước số (vd: +). Có thể để trống","default":""},
+  {"id":"suffix","type":"string","label":"Đơn vị sau số (vd: %, giờ, người)","default":"%"},
+  {"id":"label","type":"string","label":"Ý nghĩa con số, tối đa 10 từ","default":"nhân viên mới nghỉ việc trong năm đầu"},
+  {"id":"note","type":"string","label":"Nguồn số liệu (chữ nhỏ). Để trống thì ẩn","default":""},
+  {"id":"times","type":"string","label":"Giây: số bắt đầu đếm|dòng ý nghĩa|nguồn","default":"0.3|1.0|1.8"},
+  {"id":"count","type":"string","label":"Thời gian đếm (giây)","default":"1.2"}
+]'>
+<body>
+<div data-composition-id="big-number" data-width="1920" data-height="1080" data-start="0" data-duration="600">
+  <style>
+    [data-composition-id="big-number"]{font-family:var(--font-display,'DINRoundOT',sans-serif);color:var(--ink,#27364A)}
+    [data-composition-id="big-number"] .wrap{position:absolute;inset:0;background:var(--bg,#F7F9FC);overflow:hidden}
+    [data-composition-id="big-number"] .deco{position:absolute;right:-220px;top:-220px;width:760px;height:760px;border-radius:50%;background:var(--bg-alt,#EAF2FC)}
+    [data-composition-id="big-number"] .head{position:absolute;left:200px;top:120px;right:200px;font-size:64px;font-weight:700;line-height:1.15}
+    [data-composition-id="big-number"] .head:before{content:"";display:block;width:72px;height:8px;border-radius:4px;background:var(--accent,#B88A2D);margin-bottom:28px}
+    [data-composition-id="big-number"] .box{position:absolute;left:200px;right:200px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+    [data-composition-id="big-number"] .numline{display:flex;align-items:baseline;gap:12px;color:var(--primary,#2F5D9F);font-weight:700}
+    [data-composition-id="big-number"] .val{font-size:300px;line-height:1;font-variant-numeric:tabular-nums}
+    [data-composition-id="big-number"] .pre,[data-composition-id="big-number"] .suf{font-size:150px;color:var(--accent-text,#9D6F1D)}
+    [data-composition-id="big-number"] .label{font-size:64px;font-weight:500;line-height:1.2;margin-top:28px;max-width:1300px}
+    [data-composition-id="big-number"] .note{font-size:32px;color:var(--ink-2,#6B7280);margin-top:36px}
+  </style>
+  <div class="wrap"><div class="deco" data-layout-ignore></div>
+    <div class="box"><div class="numline"><span class="pre"></span><span class="val">0</span><span class="suf"></span></div><div class="label"></div><div class="note"></div></div></div>
+  <script>
+  (function(){
+    var S='[data-composition-id="big-number"]';
+    var root=document.querySelector(S);
+    var q=function(s){return root.querySelector(s)};
+    var qa=function(s){return Array.prototype.slice.call(root.querySelectorAll(s))};
+    var v=window.__hyperframes.getVariables();
+    function T(v,n,d){var a=String(v.times||"").split("|").map(function(x){return parseFloat(x)});var o=[];for(var i=0;i<n;i++){o.push(isFinite(a[i])?a[i]:d[i])}return o}
+    function L(s){return String(s||"").split("|").map(function(x){return x.trim()}).filter(Boolean)}
+    function fit(el,maxH,minPx){if(!el)return;var px=parseFloat(getComputedStyle(el).fontSize);var g=0;while(el.scrollHeight>maxH&&px>minPx&&g<40){px-=4;el.style.fontSize=px+"px";g++}}
+    var tl=gsap.timeline({paused:true});
+    var t=T(v,3,[0.3,1.0,1.8]);
+    var target=parseFloat(String(v.value).replace(',','.'))||0; var dec=(String(v.value).split(/[.,]/)[1]||'').length;
+    var fmt=function(x){return x.toFixed(dec).replace('.',',')};
+    q('.pre').textContent=v.prefix||''; q('.suf').textContent=v.suffix||''; q('.label').textContent=v.label||''; q('.note').textContent=v.note||'';
+    if(!v.note)q('.note').style.display='none';
+    fit(q('.label'),230,40);
+    var o={n:0}; q('.val').textContent=fmt(0);
+    tl.from(q('.numline'),{opacity:0,y:30,duration:.5,ease:'power3.out'},t[0]);
+    tl.to(o,{n:target,duration:parseFloat(v.count)||1.2,ease:'power2.out',onUpdate:function(){q('.val').textContent=fmt(o.n)}},t[0]);
+    tl.from(q('.label'),{opacity:0,y:24,duration:.5,ease:'power3.out'},t[1]);
+    if(v.note)tl.from(q('.note'),{opacity:0,duration:.4},t[2]);
+    tl.to(q('.deco'),{x:-60,y:40,scale:1.06,duration:12,ease:'none'},0.9);
+    window.__timelines=window.__timelines||{};
+    window.__timelines["big-number"]=tl;
+  })();
+  </script>
+</div>
+</body>
+</html>

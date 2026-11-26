@@ -1,0 +1,22 @@
+[
+ {"code": "F1", "name": "DINRoundOT", "fit": "Mặc định, đúng thương hiệu TH. Chỉ dùng cho nội bộ.", "source": "kit", "adjust": 100,
+  "faces": [["DINROUNDOT-REGULAR.otf", "400", "normal"], ["DINROUNDOT-MEDIUM.otf", "500", "normal"], ["DINROUNDOT-BOLD.otf", "700", "normal"],
+            ["DINROUNDOT-MEDIUMITALIC.otf", "500", "italic"], ["DINROUNDOT-BOLDITALIC.otf", "700", "italic"]]},
+ {"code": "F2", "name": "Montserrat", "fit": "Hiện đại, hình khối rõ. Hợp sự kiện, truyền thông.", "source": "bundle", "folder": "montserrat", "adjust": 85,
+  "faces": [["Montserrat-VariableFont_wght.ttf", "100 900", "normal"], ["Montserrat-Italic-VariableFont_wght.ttf", "100 900", "italic"]]},
+ {"code": "F3", "name": "Segoe UI", "fit": "Quen mắt như Office. Hợp hướng dẫn công việc.", "source": "windows", "adjust": 93.5,
+  "faces": [["segoeui.ttf", "400", "normal"], ["seguisb.ttf", "500", "normal"], ["segoeuib.ttf", "700", "normal"],
+            ["seguisbi.ttf", "500", "italic"], ["segoeuiz.ttf", "700", "italic"]]},
+ {"code": "F4", "name": "Roboto", "fit": "Trung tính, số rõ. Hợp số liệu, phần mềm.", "source": "bundle", "folder": "roboto", "adjust": 97.5,
+  "faces": [["Roboto-Regular.ttf", "400", "normal"], ["Roboto-Medium.ttf", "500", "normal"], ["Roboto-Bold.ttf", "700", "normal"]]},
+ {"code": "F5", "name": "Open Sans", "fit": "Thoáng, dễ đọc trên điện thoại.", "source": "bundle", "folder": "open-sans", "adjust": 90.3,
+  "faces": [["OpenSans-Regular.ttf", "400", "normal"], ["OpenSans-Semibold.ttf", "500", "normal"], ["OpenSans-Bold.ttf", "700", "normal"],
+            ["OpenSans-BoldItalic.ttf", "700", "italic"]]},
+ {"code": "F6", "name": "Josefin Sans", "fit": "Thanh, duyên dáng. Hợp văn hóa, ngày lễ.", "source": "bundle", "folder": "josefin-sans", "adjust": 91.8,
+  "faces": [["JosefinSans-Regular.ttf", "400", "normal"], ["JosefinSans-Medium.ttf", "500", "normal"], ["JosefinSans-Bold.ttf", "700", "normal"],
+            ["JosefinSans-BoldItalic.ttf", "700", "italic"]]},
+ {"code": "F7", "name": "Roboto Slab", "fit": "Chân vuông, chắc chắn. Hợp tổng kết, bài đọc.", "source": "bundle", "folder": "roboto-slab", "adjust": 93.4,
+  "faces": [["RobotoSlab-Regular.ttf", "400", "normal"], ["RobotoSlab-Bold.ttf", "700", "normal"]]},
+ {"code": "F8", "name": "Constantia", "fit": "Chữ có chân, trang trọng. Hợp thư lãnh đạo, kỷ niệm.", "source": "windows", "adjust": 94.3,
+  "faces": [["constan.ttf", "400", "normal"], ["constanb.ttf", "700", "normal"], ["constani.ttf", "400", "italic"], ["constanz.ttf", "700", "italic"]]}
+]

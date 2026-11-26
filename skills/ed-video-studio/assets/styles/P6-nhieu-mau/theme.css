@@ -1,0 +1,81 @@
+/* P6 · Nhiều màu — khối màu ghép kiểu bento, mỗi khối một màu, chữ trên khối luôn dùng màu mực */
+:root{--bg:#FFF6E4;--bg-alt:#FFE9B0;--bg-dark:#23252E;--ink:#23252E;--ink-2:#50535F;
+  --primary-deep:#23252E;--primary:#23252E;--accent:#FFC23C;--accent-text:#B8321D;--accent-on-dark:#FFC23C;
+  --card:#FFFFFF;--radius-card:48px;--card-border:0 solid transparent;--card-shadow:none;
+  --font-display:'DINRoundOT',sans-serif}
+
+/* bento cần các khối đứng yên đúng chỗ: tắt chuyển động trôi của khối trang trí (vẫn hiện dần) */
+#root .deco{border-radius:48px;background:#FF7A62;width:434px;height:300px;right:182px;top:56px;transform:none!important}
+#root .head{left:182px;top:56px;height:300px;width:1100px;right:auto;background:#fff;border-radius:48px;padding:0 64px;display:flex;flex-direction:column;justify-content:center;font-size:72px}
+#root .head:before{width:120px;height:18px;border-radius:99px;background:#63B3F5;margin-bottom:30px}
+
+/* mở đầu */
+#root .sb-title .box{left:56px;top:56px;bottom:56px;width:1220px;background:#63B3F5;border-radius:56px;padding:0 90px;box-sizing:border-box}
+#root .sb-title .bar{background:#23252E;height:20px;width:130px;border-radius:99px}
+#root .sb-title .eyebrow{color:#23252E;font-weight:700}
+#root .sb-title .title{font-size:146px;line-height:1.1}
+#root .sb-title .sub{color:#23252E;font-weight:500}
+#root .sb-title .deco{width:560px;height:520px;right:56px;top:56px;background:#FFC23C}
+#root .sb-title .title{max-width:800px}
+#root .sb-title .wrap::after{content:"";position:absolute;right:56px;top:604px;width:560px;height:420px;border-radius:48px;background:#67CB84}
+#root .sb-title .wrap::before{content:"";position:absolute;right:210px;top:190px;width:250px;height:250px;border-radius:50%;background:#FF7A62;z-index:1}
+#root .sb-title .num{z-index:1;color:#23252E;opacity:1;font-size:300px;right:56px;width:560px;text-align:center;bottom:110px}
+
+/* con số */
+#root .sb-number .box{left:56px;right:640px;top:56px;bottom:56px;background:#FFC23C;border-radius:56px;padding:0 90px}
+#root .sb-number .numline{color:#23252E}
+#root .sb-number .val{font-size:440px}
+#root .sb-number .pre,#root .sb-number .suf{font-size:150px;color:#23252E}
+#root .sb-number .label{font-weight:700;font-size:68px}
+#root .sb-number .note{color:#23252E}
+#root .sb-number .deco{width:560px;height:480px;right:56px;background:#63B3F5}
+#root .sb-number .wrap::after{content:"";position:absolute;right:56px;top:564px;width:560px;height:460px;border-radius:48px;background:#AF92F5}
+#root .sb-number .wrap::before{content:"";position:absolute;right:196px;top:650px;width:280px;height:280px;border-radius:50%;background:#67CB84;z-index:1}
+
+/* quy trình: mỗi bước một khối */
+#root .sb-steps .track{top:400px;height:600px}
+#root .sb-steps .line,#root .sb-steps .fill{display:none}
+#root .sb-steps .step{height:560px;width:420px;margin-left:-210px;border-radius:48px;padding:80px 24px 0;box-sizing:border-box;background:#63B3F5}
+#root .sb-steps .track:has(.step:nth-child(6)) .step{width:356px;margin-left:-178px}
+#root .sb-steps .track:has(.step:nth-child(7)) .step{width:276px;margin-left:-138px}
+#root .sb-steps .step:nth-child(4){background:#67CB84}
+#root .sb-steps .step:nth-child(5){background:#AF92F5}
+#root .sb-steps .step:nth-child(6){background:#FF7A62}
+#root .sb-steps .step:nth-child(7){background:#FFC23C}
+#root .sb-steps .dot,#root .sb-steps .step.on .dot{width:190px;height:190px;border:0;background:#fff;color:#23252E;font-size:96px}
+#root .sb-steps .lab{font-size:50px;font-weight:700;margin-top:60px}
+
+/* so sánh */
+#root .sb-compare .cols{left:182px;right:182px;top:400px;bottom:110px;gap:32px}
+#root .sb-compare .col.bad{background:#E8E1CF;border:0}
+#root .sb-compare .col.good{background:#67CB84}
+#root .sb-compare .ct,#root .sb-compare .good .ct,#root .sb-compare .bad .ct{color:#23252E;font-size:56px}
+#root .sb-compare .bad .it{color:#41434D} #root .sb-compare .it{font-size:48px}
+#root .sb-compare .good .mk{background:#23252E} #root .sb-compare .bad .mk{background:#6F6A5C}
+#root .sb-compare .good .it:before,#root .sb-compare .bad .it:before{background:#23252E;top:42px}
+
+/* ba ý */
+#root .sb-points .row{left:182px;right:182px;gap:32px}
+#root .sb-points .card{background:#63B3F5;min-height:500px}
+#root .sb-points .card:nth-child(2){background:#67CB84} #root .sb-points .card:nth-child(3){background:#AF92F5}
+#root .sb-points .card:nth-child(4){background:#FF7A62}
+#root .sb-points .idx{color:#23252E;font-size:130px}
+#root .sb-points .txt{font-weight:700;font-size:60px}
+
+/* câu chốt, kêu gọi */
+#root .sb-message .wrap{background:#AF92F5}
+#root .sb-message .box{left:56px;right:56px;top:56px;bottom:56px;background:#fff;border-radius:56px;padding:0 150px}
+#root .sb-message .deco{display:none}
+#root .sb-message .qm{color:#B8321D} #root .sb-message .msg{color:#23252E} #root .sb-message .hl{color:#23252E}
+#root .sb-message .hl:after{background:#FFC23C;opacity:1;height:24px;z-index:-1;bottom:0}
+#root .sb-message .by{color:#50535F}
+#root .sb-outro .box{left:56px;right:56px;top:56px;bottom:56px;background:#63B3F5;border-radius:56px}
+#root .sb-outro .deco{z-index:1;width:300px;height:200px;right:96px;top:96px}
+#root .sb-outro .wrap::after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;z-index:1;left:96px;bottom:96px;top:auto;right:auto;background:#FFC23C}
+#root .sb-outro .box .title,#root .sb-outro .title{font-size:112px}
+#root .sb-outro .action{background:#23252E;z-index:1}
+#root .sb-outro .contact{color:#23252E}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}
+#root .sb-message .msg{isolation:isolate}

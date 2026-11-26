@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- ED_Video Kit · khung cảnh "key-message". Đổi nội dung bằng data-variable-values ở thẻ gắn (xem README.md cùng thư mục). -->
+<html lang="vi" data-composition-variables='[
+  {"id":"message","type":"string","label":"Câu chốt, tối đa 12 từ","default":"Học một chút mỗi ngày tốt hơn học dồn một lần"},
+  {"id":"highlight","type":"string","label":"Cụm từ cần tô màu (phải có trong câu chốt). Để trống thì không tô","default":"mỗi ngày"},
+  {"id":"by","type":"string","label":"Người nói hoặc nguồn. Để trống thì ẩn","default":""},
+  {"id":"times","type":"string","label":"Giây: câu chốt|tô màu|nguồn","default":"0.3|1.2|1.8"}
+]'>
+<body>
+<div data-composition-id="key-message" data-width="1920" data-height="1080" data-start="0" data-duration="600">
+  <style>
+    [data-composition-id="key-message"]{font-family:var(--font-display,'DINRoundOT',sans-serif)}
+    [data-composition-id="key-message"] .wrap{position:absolute;inset:0;background:var(--bg-dark,#234C87);overflow:hidden}
+    [data-composition-id="key-message"] .deco{position:absolute;left:-260px;bottom:-320px;width:900px;height:900px;border-radius:50%;background:rgba(255,255,255,.05)}
+    [data-composition-id="key-message"] .box{position:absolute;left:220px;right:220px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+    [data-composition-id="key-message"] .qm{font-size:220px;line-height:.6;color:var(--accent,#B88A2D);font-weight:700;height:110px}
+    [data-composition-id="key-message"] .msg{font-size:92px;font-weight:700;line-height:1.22;color:#fff}
+    [data-composition-id="key-message"] .hl{color:var(--accent-on-dark,#E2C27D);position:relative;white-space:nowrap}
+    [data-composition-id="key-message"] .hl:after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;border-radius:5px;background:var(--accent,#B88A2D);opacity:.55;transform:scaleX(var(--u,0));transform-origin:left center}
+    [data-composition-id="key-message"] .by{font-size:38px;color:rgba(255,255,255,.7);margin-top:40px}
+  </style>
+  <div class="wrap"><div class="deco" data-layout-ignore></div><div class="box"><div class="qm">“</div><div class="msg"></div><div class="by"></div></div></div>
+  <script>
+  (function(){
+    var S='[data-composition-id="key-message"]';
+    var root=document.querySelector(S);
+    var q=function(s){return root.querySelector(s)};
+    var qa=function(s){return Array.prototype.slice.call(root.querySelectorAll(s))};
+    var v=window.__hyperframes.getVariables();
+    function T(v,n,d){var a=String(v.times||"").split("|").map(function(x){return parseFloat(x)});var o=[];for(var i=0;i<n;i++){o.push(isFinite(a[i])?a[i]:d[i])}return o}
+    function L(s){return String(s||"").split("|").map(function(x){return x.trim()}).filter(Boolean)}
+    function fit(el,maxH,minPx){if(!el)return;var px=parseFloat(getComputedStyle(el).fontSize);var g=0;while(el.scrollHeight>maxH&&px>minPx&&g<40){px-=4;el.style.fontSize=px+"px";g++}}
+    var tl=gsap.timeline({paused:true});
+    var t=T(v,3,[0.3,1.2,1.8]);
+    var m=v.message||'', h=v.highlight||'', el=q('.msg');
+    var k=h?m.indexOf(h):-1;
+    if(k>=0){el.textContent=m.slice(0,k);var sp=document.createElement('span');sp.className='hl';sp.textContent=h;el.appendChild(sp);el.appendChild(document.createTextNode(m.slice(k+h.length)))}else{el.textContent=m}
+    q('.by').textContent=v.by?('— '+v.by):''; if(!v.by)q('.by').style.display='none';
+    fit(el,460,56);
+    tl.from(q('.qm'),{opacity:0,y:-20,duration:.5,ease:'power3.out'},Math.max(0,t[0]-.15));
+    tl.from(el,{opacity:0,y:36,duration:.65,ease:'power3.out'},t[0]);
+    if(k>=0)tl.to(q('.hl'),{'--u':1,duration:.5,ease:'power2.out'},t[1]);
+    if(v.by)tl.from(q('.by'),{opacity:0,duration:.4},t[2]);
+    tl.to(q('.deco'),{x:-60,y:40,scale:1.06,duration:12,ease:'none'},0.9);
+    window.__timelines=window.__timelines||{};
+    window.__timelines["key-message"]=tl;
+  })();
+  </script>
+</div>
+</body>
+</html>

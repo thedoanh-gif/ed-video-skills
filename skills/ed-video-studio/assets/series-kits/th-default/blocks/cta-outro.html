@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- ED_Video Kit · khung cảnh "cta-outro". Đổi nội dung bằng data-variable-values ở thẻ gắn (xem README.md cùng thư mục). -->
+<html lang="vi" data-composition-variables='[
+  {"id":"title","type":"string","label":"Lời kêu gọi chính, tối đa 8 từ","default":"Đăng ký trước ngày 30/11"},
+  {"id":"action","type":"string","label":"Làm gì, ở đâu (1 dòng)","default":"Vào LMS › Khóa học › Kỹ năng số"},
+  {"id":"contact","type":"string","label":"Liên hệ hỗ trợ. Để trống thì ẩn","default":""},
+  {"id":"logo","type":"string","label":"Đường dẫn logo trong dự án (vd: assets/brand/logo.png). Để trống thì ẩn","default":""},
+  {"id":"times","type":"string","label":"Giây: logo|lời kêu gọi|hành động|liên hệ","default":"0.1|0.4|1.0|1.6"}
+]'>
+<body>
+<div data-composition-id="cta-outro" data-width="1920" data-height="1080" data-start="0" data-duration="600">
+  <style>
+    [data-composition-id="cta-outro"]{font-family:var(--font-display,'DINRoundOT',sans-serif);color:var(--ink,#27364A)}
+    [data-composition-id="cta-outro"] .wrap{position:absolute;inset:0;background:var(--bg,#F7F9FC);overflow:hidden}
+    [data-composition-id="cta-outro"] .deco{position:absolute;right:-220px;top:-220px;width:760px;height:760px;border-radius:50%;background:var(--bg-alt,#EAF2FC)}
+    [data-composition-id="cta-outro"] .head{position:absolute;left:200px;top:120px;right:200px;font-size:64px;font-weight:700;line-height:1.15}
+    [data-composition-id="cta-outro"] .head:before{content:"";display:block;width:72px;height:8px;border-radius:4px;background:var(--accent,#B88A2D);margin-bottom:28px}
+    [data-composition-id="cta-outro"] .box{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 200px}
+    [data-composition-id="cta-outro"] .logo{height:120px;margin-bottom:56px;object-fit:contain}
+    [data-composition-id="cta-outro"] .title{font-size:100px;font-weight:700;line-height:1.1}
+    [data-composition-id="cta-outro"] .action{margin-top:44px;font-size:48px;font-weight:500;color:#fff;background:var(--primary,#2F5D9F);padding:24px 56px;border-radius:999px}
+    [data-composition-id="cta-outro"] .contact{margin-top:40px;font-size:36px;color:var(--ink-2,#6B7280)}
+  </style>
+  <div class="wrap"><div class="deco" data-layout-ignore></div><div class="box"><img class="logo" alt=""/><div class="title"></div><div class="action"></div><div class="contact"></div></div></div>
+  <script>
+  (function(){
+    var S='[data-composition-id="cta-outro"]';
+    var root=document.querySelector(S);
+    var q=function(s){return root.querySelector(s)};
+    var qa=function(s){return Array.prototype.slice.call(root.querySelectorAll(s))};
+    var v=window.__hyperframes.getVariables();
+    function T(v,n,d){var a=String(v.times||"").split("|").map(function(x){return parseFloat(x)});var o=[];for(var i=0;i<n;i++){o.push(isFinite(a[i])?a[i]:d[i])}return o}
+    function L(s){return String(s||"").split("|").map(function(x){return x.trim()}).filter(Boolean)}
+    function fit(el,maxH,minPx){if(!el)return;var px=parseFloat(getComputedStyle(el).fontSize);var g=0;while(el.scrollHeight>maxH&&px>minPx&&g<40){px-=4;el.style.fontSize=px+"px";g++}}
+    var tl=gsap.timeline({paused:true});
+    var t=T(v,4,[0.1,0.4,1.0,1.6]);
+    q('.title').textContent=v.title||''; q('.action').textContent=v.action||''; q('.contact').textContent=v.contact||'';
+    if(v.logo){q('.logo').src=v.logo}else{q('.logo').style.display='none'}
+    if(!v.action)q('.action').style.display='none'; if(!v.contact)q('.contact').style.display='none';
+    fit(q('.title'),330,60);
+    tl.from(q('.deco'),{scale:.85,opacity:0,duration:.9,ease:'power2.out'},0);
+    if(v.logo)tl.from(q('.logo'),{opacity:0,y:-20,duration:.5,ease:'power3.out'},t[0]);
+    tl.from(q('.title'),{opacity:0,y:36,duration:.6,ease:'power3.out'},t[1]);
+    if(v.action)tl.from(q('.action'),{opacity:0,scale:.9,duration:.5,ease:'back.out(1.7)'},t[2]);
+    if(v.contact)tl.from(q('.contact'),{opacity:0,duration:.4},t[3]);
+    tl.to(q('.deco'),{x:-60,y:40,scale:1.06,duration:12,ease:'none'},0.9);
+    window.__timelines=window.__timelines||{};
+    window.__timelines["cta-outro"]=tl;
+  })();
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* P1 · Năng lượng — poster thể thao: mảng cắt xéo, chữ đậm nghiêng, cam san hô + xanh ngọc */
+:root{--bg:#FFF8F0;--bg-alt:#FFE4DA;--bg-dark:#C93A1E;--ink:#1F2937;--ink-2:#55606F;
+  --primary-deep:#0F5F58;--primary:#0F766E;--accent:#FF6B4A;--accent-text:#C93A1E;--accent-on-dark:#FFE27A;
+  --card:#FFFFFF;--radius-card:10px;--card-border:0 solid transparent;--card-shadow:14px 14px 0 rgba(31,41,55,.12);
+  --font-display:'DINRoundOT',sans-serif}
+
+#root .head,#root .title,#root .msg,#root .val,#root .pre,#root .suf,#root .ct{font-style:italic}
+#root .wrap::before{content:"";position:absolute;left:-60px;top:-70px;width:1500px;height:118px;background:#FF6B4A;clip-path:polygon(0 0,100% 0,95% 100%,0 100%)}
+#root .wrap::after{content:"";position:absolute;right:-40px;bottom:-30px;width:860px;height:70px;background:#14B8A6;clip-path:polygon(6% 0,100% 0,100% 100%,0 100%)}
+#root .deco{border-radius:0;background:#FFE4DA;width:620px;height:1500px;right:-60px;top:-200px;clip-path:polygon(46% 0,100% 0,54% 100%,0 100%)}
+#root .head{text-transform:uppercase;font-size:76px;top:130px}
+#root .head:before{width:150px;height:16px;border-radius:0;background:#14B8A6;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+
+/* mở đầu: nền cam đậm, mảng xanh ngọc */
+#root .sb-title .wrap{background:#C93A1E}
+#root .sb-title .wrap::before{left:auto;right:-80px;top:0;width:640px;height:1080px;background:#0F766E;clip-path:polygon(52% 0,100% 0,100% 100%,0 100%)}
+#root .sb-title .wrap::after{left:-40px;right:auto;bottom:90px;width:900px;height:22px;background:#FFE27A}
+#root .sb-title .deco{background:rgba(255,255,255,.14);right:230px;width:360px}
+#root .sb-title .num{color:#fff;opacity:.22;font-size:420px;bottom:0;right:60px}
+#root .sb-title .bar{background:#FFE27A;border-radius:0;height:20px;width:180px;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+#root .sb-title .eyebrow{color:#FFE27A;font-weight:700}
+#root .sb-title .title{color:#fff;font-size:150px;text-transform:uppercase;line-height:1.08}
+#root .sb-title .sub{color:#fff;font-weight:500}
+
+/* con số */
+#root .sb-number .val{font-size:440px;color:#C93A1E}
+#root .sb-number .pre,#root .sb-number .suf{font-size:170px;color:#0F766E}
+#root .sb-number .label{font-size:72px;font-weight:700}
+
+/* quy trình */
+#root .sb-steps .line{background:#BFEDE6;height:18px;top:54px;border-radius:0}
+#root .sb-steps .fill{background:#14B8A6;height:18px;top:54px;border-radius:0}
+#root .sb-steps .dot{border-radius:18px;rotate:-7deg;border:0;background:#fff;box-shadow:10px 10px 0 rgba(31,41,55,.14);color:#C93A1E;font-style:italic;font-size:64px}
+#root .sb-steps .step.on .dot{background:#C93A1E;color:#fff}
+#root .sb-steps .lab{font-weight:700;font-size:44px}
+
+/* so sánh */
+#root .sb-compare .col.bad{background:#FFE4DA;border:0;rotate:-1.2deg}
+#root .sb-compare .col.good{background:#0F766E;color:#fff;rotate:1.2deg;box-shadow:18px 18px 0 rgba(31,41,55,.18)}
+#root .sb-compare .good .ct{color:#FFE27A} #root .sb-compare .bad .ct{color:#9A2E18}
+#root .sb-compare .bad .it{color:#4B3A37} #root .sb-compare .bad .mk{background:#9A2E18;border-radius:12px}
+#root .sb-compare .good .mk{background:#FFE27A;color:#0F5F58;border-radius:12px}
+#root .sb-compare .good .it:before{background:#FFE27A} #root .sb-compare .bad .it:before{background:#9A2E18}
+
+/* ba ý */
+#root .sb-points .card{border-top:22px solid #C93A1E}
+#root .sb-points .card:nth-child(2){border-top-color:#0F766E}
+#root .sb-points .idx{font-style:italic;font-size:110px;color:#C93A1E}
+#root .sb-points .card:nth-child(2) .idx{color:#0F766E}
+#root .sb-points .txt{font-weight:700}
+
+/* câu chốt, kêu gọi */
+#root .sb-message .wrap::before{left:auto;right:-60px;top:auto;bottom:0;width:520px;height:1080px;background:#0F766E;clip-path:polygon(72% 0,100% 0,100% 100%,0 100%)}
+#root .sb-message .deco{left:auto;right:330px;width:300px;background:rgba(255,255,255,.10)}
+#root .sb-message .qm{color:#FFE27A} #root .sb-message .hl:after{background:#FFE27A}
+#root .sb-outro .title{text-transform:uppercase;font-size:120px}
+#root .sb-outro .action{background:#C93A1E;border-radius:10px;font-weight:700;box-shadow:12px 12px 0 #14B8A6}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}

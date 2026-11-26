@@ -1,0 +1,10 @@
+# Bảng thuật ngữ: "cách Whisper hay nghe sai => cách viết đúng"
+# Dùng cho scripts/to_srt.py --glossary và để soạn lời ElevenLabs (cách đọc).
+# Thêm dòng mới mỗi khi review phát hiện lỗi lặp lại.
+ti ếch => TH
+tê hát => TH
+e lơ ning => e-learning
+en em ét => LMS
+ây ai => AI
+ây ô pi => AOP
+đi ai en => DINRoundOT

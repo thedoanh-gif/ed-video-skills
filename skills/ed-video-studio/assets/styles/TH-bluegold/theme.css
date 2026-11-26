@@ -1,0 +1,9 @@
+/* TH · BlueGold (mặc định) — nền giấy sáng, viền mực, bóng đặc. Token theo series-kits/th-default/frame.md. */
+:root{--bg:#F7F0E2;--bg-alt:#EAF2FC;--bg-dark:#27364A;--ink:#27364A;--ink-2:#6B7280;
+  --primary-deep:#234C87;--primary:#2F5D9F;--accent:#B88A2D;--accent-text:#9D6F1D;--accent-on-dark:#E2C27D;
+  --card:#FFFFFF;--radius-card:14px;--card-border:3px solid #27364A;--card-shadow:6px 6px 0 #27364A;
+  --font-display:'DINRoundOT',sans-serif}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}
+#root .sb-compare .bad .mk{background:#6B7280}

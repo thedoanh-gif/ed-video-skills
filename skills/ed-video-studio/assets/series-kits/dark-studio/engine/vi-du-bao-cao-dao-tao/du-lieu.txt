@@ -1,0 +1,152 @@
+﻿# =====================================================================
+#  DỮ LIỆU BÁO CÁO ĐÀO TẠO 2026  —  TOÀN BỘ LÀ NỘI DUNG GIẢ LẬP
+#  (con số, chương trình, ý kiến học viên, kế hoạch)
+#  Cách sửa: đổi phần bên PHẢI dấu "=", lưu file, rồi chạy cap-nhat-so.bat
+#  Số thập phân viết kiểu Việt Nam (4,5). Hàng nghìn: 5200 hoặc 5.200
+#  Dòng bắt đầu bằng "#" là ghi chú, không ảnh hưởng video.
+#  Trong các dòng CHỮ, nên viết số bằng chữ để giọng đọc đúng.
+# =====================================================================
+
+# --- CHUNG ---
+nam = 2026
+moc_du_lieu = 30/11/2026
+don_vi = công ty
+# co = hiện nhãn "NỘI DUNG GIẢ LẬP" trên video · khong = ẩn (chỉ đổi khi đã thay nội dung thật)
+nhan_gia_lap = co
+
+# --- 1. QUY MÔ: nhân sự theo khối (tổng, tỷ lệ tham gia, giờ trung bình tự tính) ---
+vp_nhan_su = 900
+vp_tham_gia = 873
+vp_gio = 40
+kd_nhan_su = 1500
+kd_tham_gia = 1425
+kd_gio = 38
+sx_nhan_su = 2800
+sx_tham_gia = 2486
+sx_gio = 30,9
+
+so_lop_ke_hoach = 320
+so_lop_thuc_hien = 342
+luot_hoc = 18600
+luot_hoc_nam_truoc = 15500
+gio_tb_ke_hoach = 32
+gio_tb_nam_truoc = 28,6
+
+# cơ cấu theo nhóm chương trình (% số giờ, tổng phải = 100)
+nhom_chuyen_mon = 38
+nhom_an_toan = 24
+nhom_ky_nang = 18
+nhom_quan_ly = 12
+nhom_hoi_nhap = 8
+
+# --- NGÂN SÁCH (đơn vị: tỷ đồng) ---
+ngan_sach_ke_hoach = 12,5
+ngan_sach_thuc_hien = 11,6
+# cơ cấu chi phí (%, tổng phải = 100)
+cp_giang_vien = 46
+cp_to_chuc = 24
+cp_hoc_lieu = 22
+cp_khac = 8
+
+# --- 2. CHƯƠNG TRÌNH TRỌNG ĐIỂM: TƯ DUY ---
+td_ten = Tư duy giải quyết vấn đề
+td_nguoi = 960
+td_hai_long = 4,6
+td_noi_dung = gọi đúng vấn đề, tìm nguyên nhân gốc, rồi thử một giải pháp nhỏ
+# % học viên đã dùng công cụ của khóa vào công việc
+td_ap_dung = 71
+td_ket_qua = nhiều cuộc họp bắt đầu bằng câu hỏi vì sao, thay vì tìm người có lỗi
+
+# --- CHƯƠNG TRÌNH TRỌNG ĐIỂM: AI ---
+ai_ten = Ứng dụng AI trong công việc
+ai_nguoi = 1250
+ai_hai_long = 4,7
+ai_noi_dung = viết yêu cầu rõ ràng, tóm tắt tài liệu, soạn nháp email và báo cáo
+# % dùng AI hằng tuần sau 3 tháng
+ai_hang_tuan = 62
+# giờ tiết kiệm mỗi người mỗi tuần (người học tự đánh giá)
+ai_gio_tiet_kiem = 3
+ai_luu_y = không đưa dữ liệu nội bộ vào công cụ chưa được cho phép
+
+# --- CHƯƠNG TRÌNH TIÊU BIỂU KHÁC ---
+ct1_ten = Hội nhập ba mươi ngày
+ct1_nguoi = 420
+ct1_ket_qua = người mới bắt nhịp nhanh hơn
+ct2_ten = Quản lý đội nhóm
+ct2_nguoi = 180
+ct2_ket_qua = nhiều đội duy trì họp ngắn đầu tuần
+ct3_ten = An toàn đầu ca
+ct3_nguoi = 2400
+ct3_ket_qua = công nhân chủ động nhắc nhau trước khi vận hành
+
+# --- 3. TÍNH ỨNG DỤNG ---
+# tỷ lệ đạt bài kiểm tra sau khóa (%)
+ty_le_dat = 91
+ty_le_dat_muc_tieu = 85
+# tỷ lệ áp dụng vào công việc sau 3 tháng (%)
+ap_dung = 68
+ap_dung_muc_tieu = 75
+# tỷ lệ áp dụng theo cách học (%)
+ap_dung_kem_cap = 81
+ap_dung_truc_tiep = 70
+ap_dung_truc_tuyen = 57
+
+# --- PHẢN HỒI CỦA HỌC VIÊN (chỉ ghi chức danh, không ghi tên người) ---
+so_phieu = 14200
+y_kien_1_nguoi = Một nhân viên kinh doanh
+y_kien_1_noi_dung = Học xong, tôi soạn báo giá nhanh hơn hẳn
+y_kien_2_nguoi = Một tổ trưởng sản xuất
+y_kien_2_noi_dung = Tình huống rất sát việc, nhưng chúng tôi cần thêm giờ thực hành
+y_kien_3_nguoi = Một nhân viên văn phòng
+y_kien_3_noi_dung = Bài trực tuyến nên chia ngắn để học được giữa giờ
+
+# --- ĐIỂM HÀI LÒNG theo tiêu chí, thang 5 (điểm chung = trung bình 4 tiêu chí) ---
+hl_giang_vien = 4,7
+hl_noi_dung = 4,6
+hl_to_chuc = 4,4
+hl_tai_lieu = 4,2
+hai_long_nam_truoc = 4,3
+# 3 điều học viên thích nhất
+thich_1 = ví dụ sát công việc thật
+thich_2 = giảng viên giải đáp tận tình
+thich_3 = có công cụ dùng được ngay hôm sau
+
+# --- 4. ĐIỂM CẦN CẢI THIỆN ---
+cai_thien_1 = thêm thời gian thực hành ngay trong lớp
+cai_thien_2 = lịch học linh hoạt hơn cho khối làm theo ca
+cai_thien_3 = tài liệu và bài trực tuyến ngắn gọn, dễ tra lại
+
+# --- KẾ HOẠCH NĂM SAU ---
+muc_tieu_ap_dung = 75
+muc_tieu_ai = 75
+muc_tieu_san_xuat = 93
+muc_tieu_gio = 40
+ngan_sach_nam_sau = 13,2
+hanh_dong_ap_dung = thêm giờ thực hành, quản lý theo dõi một bài tập áp dụng
+hanh_dong_ai = mỗi phòng ban có một buổi thực hành AI hằng tháng
+hanh_dong_san_xuat = mở lớp ngắn theo ca, ngay tại nhà máy
+
+# =====================================================================
+#  CHỮ NGẮN TRÊN HÌNH (không đọc thành lời, viết 2-6 từ)
+#  Dòng có dấu "|" là nhiều mục, ngăn cách bằng "|".
+#  Lưu ý: hình minh họa vẽ theo nội dung hiện tại. Đổi hẳn chủ đề
+#  của một mục thì cần chỉnh cả hình trong file scenes_*.py.
+# =====================================================================
+td_buoc_nhan = Gọi đúng vấn đề | Tìm nguyên nhân gốc | Thử giải pháp nhỏ
+td_truoc_nhan = Lỗi của ai?
+td_sau_nhan = Vì sao?
+ai_viec_nhan = Viết yêu cầu rõ | Tóm tắt tài liệu | Soạn email, báo cáo
+ai_yeu_cau_nhan = Tóm tắt báo cáo này thành 5 ý
+ai_cam_nhan = Dữ liệu nội bộ
+ct1_nhan = Bắt nhịp nhanh hơn
+ct2_nhan = Họp ngắn đầu tuần
+ct3_nhan = Nhắc nhau trước vận hành
+thich_1_nhan = Ví dụ sát việc
+thich_2_nhan = Giải đáp tận tình
+thich_3_nhan = Dùng được ngay
+cai_thien_1_nhan = Thêm giờ thực hành
+cai_thien_2_nhan = Lịch học theo ca
+cai_thien_3_nhan = Tài liệu ngắn, dễ tra
+hanh_dong_ap_dung_nhan = Bài tập áp dụng, quản lý theo dõi
+hanh_dong_ai_nhan = Thực hành AI hằng tháng
+hanh_dong_san_xuat_nhan = Lớp ngắn theo ca tại nhà máy

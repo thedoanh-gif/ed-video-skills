@@ -1,0 +1,12 @@
+# Font thương hiệu và font bản quyền: không đưa lên repo
+*.otf
+DINROUND*
+DINRound*
+# Chỉ giữ font giấy phép mở đã kê trong THIRD_PARTY.md
+
+__pycache__/
+*.pyc
+node_modules/
+.env
+Thumbs.db
+desktop.ini

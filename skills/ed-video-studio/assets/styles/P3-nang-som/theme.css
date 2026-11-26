@@ -1,0 +1,65 @@
+/* P3 · Nắng sớm — sổ tay: nền chấm, nét viền tay, bút dạ quang, giấy ghi chú: vàng nắng + xanh navy */
+@font-face{font-family:'DancingScript';font-weight:700;src:url('assets/fonts/DancingScript-Bold.ttf')}
+:root{--bg:#FFFBEA;--bg-alt:#FEF3C7;--bg-dark:#1E2A44;--ink:#1E2A44;--ink-2:#5B6478;
+  --primary-deep:#1E40AF;--primary:#2563EB;--accent:#F59E0B;--accent-text:#B45309;--accent-on-dark:#FCD34D;
+  --card:#FFFFFF;--radius-card:255px 18px 225px 18px / 18px 225px 18px 255px;--card-border:6px solid #1E2A44;--card-shadow:12px 14px 0 rgba(30,42,68,.12);
+  --font-display:'DINRoundOT',sans-serif}
+
+#root .wrap{background-image:radial-gradient(#D9CFA8 2.4px,transparent 2.6px);background-size:48px 48px}
+#root .deco{background:transparent;border:7px dashed #F59E0B;width:520px;height:480px;right:-130px;top:-150px;border-radius:48% 52% 46% 54% / 52% 46% 54% 48%;opacity:.75}
+#root .head{right:auto;max-width:1520px;font-size:72px;padding:0 18px;margin-left:-18px;background:linear-gradient(transparent 62%,#FDE68A 62%,#FDE68A 94%,transparent 94%)}
+#root .head:before{display:none}
+
+/* mở đầu */
+#root .sb-title .bar{display:none}
+#root .sb-title .eyebrow{font-family:'DancingScript',cursive;font-weight:700;font-size:76px;letter-spacing:0;color:#2563EB;rotate:-3deg;align-self:flex-start}
+#root .sb-title .title{font-size:150px;line-height:1.14;align-self:flex-start;max-width:1060px;background:linear-gradient(transparent 66%,#FDE68A 66%,#FDE68A 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#root .sb-title .sub{font-family:'DancingScript',cursive;font-size:60px;color:#B45309}
+#root .sb-title .deco{width:480px;height:450px;right:90px;top:315px}
+#root .sb-title .num{color:#2563EB;opacity:1;font-size:260px;right:90px;width:480px;text-align:center;bottom:410px;rotate:-6deg}
+
+/* con số: khoanh tay */
+#root .sb-number .box{align-items:center;text-align:center}
+#root .sb-number .numline{position:relative;padding:20px 150px 36px;margin-top:-30px}
+#root .sb-number .numline::after{content:"";position:absolute;inset:0;border:9px solid #E0503A;border-radius:50% 46% 52% 48% / 48% 54% 46% 52%;rotate:-3deg}
+#root .sb-number .val{font-size:340px;color:#1E2A44}
+#root .sb-number .pre,#root .sb-number .suf{font-size:130px;color:#2563EB}
+#root .sb-number .label{background:linear-gradient(transparent 60%,#FDE68A 60%,#FDE68A 94%,transparent 94%);margin-top:50px;font-weight:700}
+#root .sb-number .note{font-family:'DancingScript',cursive;font-size:44px;color:#B45309}
+
+/* quy trình */
+#root .sb-steps .line{background:repeating-linear-gradient(90deg,#1E2A44 0 30px,transparent 30px 52px);height:7px}
+#root .sb-steps .fill{background:#2563EB;height:9px}
+#root .sb-steps .dot{border:7px solid #1E2A44;color:#1E2A44;border-radius:58% 42% 52% 48% / 46% 56% 44% 54%;box-shadow:8px 10px 0 rgba(30,42,68,.12);font-family:'DancingScript',cursive;font-size:70px}
+#root .sb-steps .step.on .dot{background:#FDE68A;color:#1E2A44}
+#root .sb-steps .lab{font-weight:700}
+
+/* so sánh: hai tờ giấy dán */
+#root .sb-compare .col{position:relative}
+#root .sb-compare .col::before{content:"";position:absolute;left:50%;top:-34px;width:200px;height:56px;margin-left:-100px;background:rgba(150,140,100,.28);rotate:-3deg}
+#root .sb-compare .col.bad{background:#FBE1DA;border:6px solid #A33B2A;rotate:-1.4deg;box-shadow:12px 14px 0 rgba(30,42,68,.10)}
+#root .sb-compare .col.good{background:#FEF3C7;rotate:1.2deg}
+#root .sb-compare .bad .ct{color:#A33B2A} #root .sb-compare .bad .mk{background:#A33B2A}
+#root .sb-compare .bad .it{color:#5A3A34} #root .sb-compare .bad .it:before{background:#A33B2A}
+#root .sb-compare .good .ct{color:#1E40AF} #root .sb-compare .good .it:before{background:#2563EB}
+
+/* ba ý */
+#root .sb-points .card:nth-child(1){background:#FEF3C7;rotate:-1.5deg}
+#root .sb-points .card:nth-child(2){background:#DBEAFE;rotate:1deg}
+#root .sb-points .card:nth-child(3){background:#DCFCE7;rotate:-.8deg}
+#root .sb-points .idx{font-family:'DancingScript',cursive;font-size:110px;color:#2563EB}
+#root .sb-points .txt{font-weight:700}
+
+/* câu chốt: khung thoại trên nền giấy */
+#root .sb-message .wrap{background-color:#FFFBEA}
+#root .sb-message .deco{background:transparent;left:auto;right:-130px;bottom:-190px}
+#root .sb-message .box{left:150px;right:150px;top:150px;bottom:180px;padding:0 90px;background:#fff;border:8px solid #1E2A44;border-radius:var(--radius-card);box-shadow:var(--card-shadow)}
+#root .sb-message .msg{color:#1E2A44} #root .sb-message .hl{color:#1E40AF} #root .sb-message .hl:after{background:#FCD34D;opacity:.9;height:22px;z-index:-1}
+#root .sb-message .by{font-family:'DancingScript',cursive;font-size:52px;color:#2563EB}
+#root .sb-outro .title{background:linear-gradient(transparent 62%,#FDE68A 62%,#FDE68A 92%,transparent 92%)}
+#root .sb-outro .action{border-radius:var(--radius-card);border:6px solid #1E2A44;background:#2563EB}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}
+#root .sb-message .qm{color:#B45309}
+#root .sb-message .msg{isolation:isolate}

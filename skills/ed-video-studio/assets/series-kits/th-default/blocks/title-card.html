@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- ED_Video Kit · khung cảnh "title-card". Đổi nội dung bằng data-variable-values ở thẻ gắn (xem README.md cùng thư mục). -->
+<html lang="vi" data-composition-variables='[
+  {"id":"eyebrow","type":"string","label":"Nhãn nhỏ (vd: PHẦN 2). Để trống thì ẩn","default":"PHẦN 1"},
+  {"id":"title","type":"string","label":"Tiêu đề, tối đa 8 từ","default":"Tiêu đề chương"},
+  {"id":"subtitle","type":"string","label":"Dòng phụ. Để trống thì ẩn","default":""},
+  {"id":"number","type":"string","label":"Số lớn mờ bên phải (vd: 02). Để trống thì ẩn","default":""},
+  {"id":"times","type":"string","label":"Giây xuất hiện, tính từ đầu cảnh: nhãn|tiêu đề|dòng phụ","default":"0.2|0.5|1.1"}
+]'>
+<body>
+<div data-composition-id="title-card" data-width="1920" data-height="1080" data-start="0" data-duration="600">
+  <style>
+    [data-composition-id="title-card"]{font-family:var(--font-display,'DINRoundOT',sans-serif);color:var(--ink,#27364A)}
+    [data-composition-id="title-card"] .wrap{position:absolute;inset:0;background:var(--bg,#F7F9FC);overflow:hidden}
+    [data-composition-id="title-card"] .deco{position:absolute;right:-220px;top:-220px;width:760px;height:760px;border-radius:50%;background:var(--bg-alt,#EAF2FC)}
+    [data-composition-id="title-card"] .head{position:absolute;left:200px;top:120px;right:200px;font-size:64px;font-weight:700;line-height:1.15}
+    [data-composition-id="title-card"] .head:before{content:"";display:block;width:72px;height:8px;border-radius:4px;background:var(--accent,#B88A2D);margin-bottom:28px}
+    [data-composition-id="title-card"] .box{position:absolute;left:200px;top:0;bottom:0;width:1300px;display:flex;flex-direction:column;justify-content:center}
+    [data-composition-id="title-card"] .bar{width:96px;height:10px;border-radius:5px;background:var(--accent,#B88A2D);margin-bottom:36px;transform-origin:left center}
+    [data-composition-id="title-card"] .eyebrow{font-size:40px;font-weight:500;letter-spacing:.12em;color:var(--primary,#2F5D9F);margin-bottom:20px}
+    [data-composition-id="title-card"] .title{font-size:112px;font-weight:700;line-height:1.16}
+    [data-composition-id="title-card"] .sub{font-size:44px;color:var(--ink-2,#6B7280);margin-top:32px;line-height:1.3}
+    [data-composition-id="title-card"] .num{position:absolute;right:120px;bottom:40px;font-size:520px;font-weight:700;line-height:1;color:var(--primary,#2F5D9F);opacity:.08}
+  </style>
+  <div class="wrap"><div class="deco" data-layout-ignore></div><div class="num" data-layout-ignore></div>
+    <div class="box"><div class="bar"></div><div class="eyebrow"></div><div class="title"></div><div class="sub"></div></div></div>
+  <script>
+  (function(){
+    var S='[data-composition-id="title-card"]';
+    var root=document.querySelector(S);
+    var q=function(s){return root.querySelector(s)};
+    var qa=function(s){return Array.prototype.slice.call(root.querySelectorAll(s))};
+    var v=window.__hyperframes.getVariables();
+    function T(v,n,d){var a=String(v.times||"").split("|").map(function(x){return parseFloat(x)});var o=[];for(var i=0;i<n;i++){o.push(isFinite(a[i])?a[i]:d[i])}return o}
+    function L(s){return String(s||"").split("|").map(function(x){return x.trim()}).filter(Boolean)}
+    function fit(el,maxH,minPx){if(!el)return;var px=parseFloat(getComputedStyle(el).fontSize);var g=0;while(el.scrollHeight>maxH&&px>minPx&&g<40){px-=4;el.style.fontSize=px+"px";g++}}
+    var tl=gsap.timeline({paused:true});
+    var t=T(v,3,[0.2,0.5,1.1]);
+    q('.eyebrow').textContent=v.eyebrow||''; q('.title').textContent=v.title||''; q('.sub').textContent=v.subtitle||''; q('.num').textContent=v.number||'';
+    if(!v.eyebrow)q('.eyebrow').style.display='none'; if(!v.subtitle)q('.sub').style.display='none';
+    fit(q('.title'),380,64);
+    tl.from(q('.deco'),{scale:.85,opacity:0,duration:.9,ease:'power2.out'},0);
+    if(v.number)tl.from(q('.num'),{y:60,opacity:0,duration:.9,ease:'power3.out'},t[1]);
+    tl.from(q('.bar'),{scaleX:0,duration:.5,ease:'power3.out'},Math.max(0,t[0]-.1));
+    if(v.eyebrow)tl.from(q('.eyebrow'),{opacity:0,y:20,duration:.45,ease:'power3.out'},t[0]);
+    tl.from(q('.title'),{opacity:0,y:36,duration:.6,ease:'power3.out'},t[1]);
+    if(v.subtitle)tl.from(q('.sub'),{opacity:0,y:20,duration:.5,ease:'power2.out'},t[2]);
+    tl.to(q('.deco'),{x:-60,y:40,scale:1.06,duration:12,ease:'none'},0.9);
+    window.__timelines=window.__timelines||{};
+    window.__timelines["title-card"]=tl;
+  })();
+  </script>
+</div>
+</body>
+</html>

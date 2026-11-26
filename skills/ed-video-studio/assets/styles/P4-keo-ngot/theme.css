@@ -1,0 +1,66 @@
+/* P4 · Kẹo ngọt — nhãn dán, bong bóng, hoa giấy: hồng + tím */
+:root{--bg:#FFF5FA;--bg-alt:#FCE7F3;--bg-dark:#5B2A9E;--ink:#2D1B3D;--ink-2:#6B5A7C;
+  --primary-deep:#5B21B6;--primary:#7C3AED;--accent:#EC4899;--accent-text:#BE185D;--accent-on-dark:#FBCFE8;
+  --card:#FFFFFF;--radius-card:64px;--card-border:0 solid transparent;--card-shadow:0 22px 0 #F5B5D8,0 40px 70px rgba(91,42,158,.14);
+  --font-display:'DINRoundOT',sans-serif}
+
+#root .wrap{background:linear-gradient(135deg,#FFF5FA 0%,#FDEBF6 52%,#EFE6FF 100%)}
+/* hoa giấy */
+#root .wrap::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 5% 12%,#EC4899 0 17px,transparent 19px),radial-gradient(circle at 13% 88%,#8B5CF6 0 24px,transparent 26px),
+ radial-gradient(circle at 36% 6%,#FBBF24 0 12px,transparent 14px),radial-gradient(circle at 63% 93%,#EC4899 0 13px,transparent 15px),
+ radial-gradient(circle at 95% 46%,#8B5CF6 0 15px,transparent 17px),radial-gradient(circle at 90% 90%,#FBBF24 0 22px,transparent 24px),
+ radial-gradient(circle at 3% 52%,#F9A8D4 0 28px,transparent 30px),radial-gradient(circle at 80% 8%,#C4B5FD 0 20px,transparent 22px),
+ radial-gradient(circle at 29% 95%,#F9A8D4 0 10px,transparent 12px),radial-gradient(circle at 53% 11%,#8B5CF6 0 8px,transparent 10px)}
+#root .deco{background:#FBD5EA;width:620px;height:620px;right:-240px;top:-260px;box-shadow:0 0 0 70px rgba(139,92,246,.12)}
+#root .head,#root .box,#root .cols,#root .track,#root .row{z-index:1}
+#root .head{left:0;right:0;top:120px;text-align:center;font-size:72px}
+#root .head:before{margin:0 auto 26px;width:130px;height:16px;border-radius:99px;background:linear-gradient(90deg,#8B5CF6,#EC4899)}
+
+/* mở đầu: nhãn dán lớn */
+#root .sb-title .bar{display:none}
+#root .sb-title .eyebrow{align-self:flex-start;background:#BE185D;color:#fff;border:8px solid #fff;border-radius:99px;padding:14px 38px 10px;font-size:36px;letter-spacing:.06em;rotate:-3deg;box-shadow:0 14px 30px rgba(91,42,158,.20);margin-bottom:40px;font-weight:700}
+#root .sb-title .title{font-size:150px;line-height:1.1;max-width:1040px;color:#4C1D95}
+#root .sb-title .sub{color:#2D1B3D;font-weight:500}
+#root .sb-title .deco{width:470px;height:470px;right:120px;top:300px;background:linear-gradient(150deg,#8B5CF6,#EC4899);border:22px solid #fff;box-shadow:0 0 0 60px rgba(236,72,153,.13),0 40px 80px rgba(91,42,158,.25)}
+#root .sb-title .num{z-index:1;color:#fff;opacity:1;font-size:250px;right:120px;width:470px;text-align:center;bottom:420px;rotate:6deg}
+
+/* con số */
+#root .sb-number .box{align-items:center;text-align:center}
+#root .sb-number .numline{background:#fff;border-radius:999px;padding:10px 140px 20px;box-shadow:var(--card-shadow);rotate:-2deg;color:#6D28D9}
+#root .sb-number .val{font-size:360px}
+#root .sb-number .pre,#root .sb-number .suf{font-size:130px;color:#BE185D}
+#root .sb-number .label{margin-top:76px;font-weight:700}
+
+/* quy trình */
+#root .sb-steps .line{background:#F5D0E6;height:22px;top:52px;border-radius:99px}
+#root .sb-steps .fill{background:linear-gradient(90deg,#8B5CF6,#EC4899);height:22px;top:52px;border-radius:99px}
+#root .sb-steps .dot{border:10px solid #fff;box-shadow:0 18px 36px rgba(91,42,158,.22);color:#6D28D9}
+#root .sb-steps .step.on .dot{background:linear-gradient(150deg,#7C3AED,#DB2777);color:#fff}
+#root .sb-steps .lab{background:#fff;border-radius:30px;padding:20px 14px 16px;margin:44px 14px 0;box-shadow:0 12px 0 #F5B5D8;font-weight:700;font-size:38px}
+
+/* so sánh */
+#root .sb-compare .col{border:14px solid #fff}
+#root .sb-compare .col.bad{background:#EEE7F2;border:14px solid #fff;rotate:-1.4deg;box-shadow:0 22px 0 #D8CBE0}
+#root .sb-compare .col.good{background:linear-gradient(150deg,#6D28D9,#BE185D);color:#fff;rotate:1.4deg}
+#root .sb-compare .good .ct{color:#fff} #root .sb-compare .good .mk{background:#fff;color:#BE185D}
+#root .sb-compare .good .it:before{background:#FBCFE8}
+
+/* ba ý */
+#root .sb-points .card{text-align:center;border:14px solid #fff}
+#root .sb-points .card:nth-child(1){background:#FCE7F3;rotate:-2deg}
+#root .sb-points .card:nth-child(2){background:#EDE9FE;rotate:1.4deg}
+#root .sb-points .card:nth-child(3){background:#FEF3C7;rotate:-1deg}
+#root .sb-points .idx{color:#6D28D9;font-size:104px}
+#root .sb-points .txt{font-weight:700}
+
+/* câu chốt, kêu gọi */
+#root .sb-message .wrap{background:linear-gradient(135deg,#5B21B6,#9D174D)}
+#root .sb-message .deco{background:rgba(255,255,255,.10);box-shadow:0 0 0 70px rgba(255,255,255,.05)}
+#root .sb-message .qm{color:#FBCFE8} #root .sb-message .hl:after{background:#F472B6}
+#root .sb-outro .title{color:#4C1D95}
+#root .sb-outro .action{background:linear-gradient(90deg,#7C3AED,#DB2777);border:10px solid #fff;box-shadow:0 18px 0 #F5B5D8}
+
+/* chữ ngắt dòng cân đối, không để rơi một chữ */
+#root .title,#root .msg,#root .label,#root .txt,#root .lab{text-wrap:balance}
+#root .sb-compare .bad .mk{background:#6F6478}
